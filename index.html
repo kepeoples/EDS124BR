@@ -2,255 +2,302 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    />
     <title>William Peoples — Teaching Programming Portfolio</title>
+    <meta
+      name="description"
+      content="Teaching demos, projects, and reflections by William (Kevin) Peoples, UC San Diego."
+    />
     <style>
-      body {
-        font-family: system-ui, sans-serif;
-        margin: 0;
-        background: #f9fafb;
-        color: #111;
+      :root {
+        --bg: #f9fafb;
+        --text: #111;
+        --muted: #555;
+        --card: #fff;
+        --border: #ddd;
+        --accent-bg: #e0e7ff;
+        --accent: #1d4ed8;
+        --radius: 12px;
+        --shadow: 0 1px 2px rgba(0,0,0,.04), 0 8px 24px rgba(0,0,0,.06);
+        --maxw: 900px;
       }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.55;
+      }
+
+      /* Skip link for accessibility */
+      .skip-link {
+        position: absolute;
+        left: -9999px;
+        top: auto;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+      }
+      .skip-link:focus {
+        left: 1rem;
+        top: 1rem;
+        width: auto;
+        height: auto;
+        padding: .5rem .75rem;
+        background: var(--accent);
+        color: #fff;
+        border-radius: .5rem;
+        z-index: 1000;
+      }
+
       header {
         background: #f3f4f6;
         padding: 2rem 1rem;
-        border-bottom: 1px solid #ddd;
+        border-bottom: 1px solid var(--border);
         text-align: center;
       }
-      h1 {
+      header h1 {
         margin: 0;
-        font-size: 2rem;
+        font-size: clamp(1.75rem, 2.5vw, 2.25rem);
+        letter-spacing: 0.2px;
       }
-      p.lead {
-        color: #555;
+      .lead {
+        color: var(--muted);
         margin-top: 0.5rem;
       }
+
       nav {
         margin-top: 1rem;
+        display: flex;
+        gap: .5rem;
+        flex-wrap: wrap;
+        justify-content: center;
       }
       nav a {
         display: inline-block;
-        margin: 0.25rem;
         padding: 0.5rem 0.75rem;
-        border-radius: 0.5rem;
-        background: #e0e7ff;
-        color: #1d4ed8;
+        border-radius: .5rem;
+        background: var(--accent-bg);
+        color: var(--accent);
         text-decoration: none;
+        border: 1px solid transparent;
       }
+      nav a:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+      }
+      nav a:hover {
+        filter: brightness(0.97);
+      }
+
+      main { margin: 0 auto; }
+
       section {
         padding: 2rem 1rem;
-        max-width: 900px;
+        max-width: var(--maxw);
         margin: auto;
       }
-      h2 {
-        margin-bottom: 0.75rem;
+      section h2 {
+        margin: 0 0 .75rem 0;
+        font-size: clamp(1.35rem, 2vw, 1.5rem);
       }
-      ul {
-        padding-left: 1.2rem;
-      }
+      ul { padding-left: 1.2rem; }
+
       .grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 1rem;
       }
       .card {
-        background: #fff;
-        border: 1px solid #ddd;
-        border-radius: 0.75rem;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
         padding: 1rem;
+        box-shadow: var(--shadow);
       }
       .card h3 {
-        margin-top: 0;
+        margin: 0 0 .5rem;
+        font-size: 1.05rem;
+      }
+      .card a {
+        color: var(--accent);
       }
       iframe {
-        border-radius: 0.5rem;
         width: 100%;
         height: 200px;
         border: 0;
+        border-radius: 8px;
+        background: #000;
+      }
+
+      .tip {
+        color: var(--muted);
+        font-size: .95rem;
+        margin-top: .75rem;
+      }
+
+      footer {
+        border-top: 1px solid var(--border);
+        color: var(--muted);
+        text-align: center;
+        padding: 2rem 1rem 3rem;
       }
     </style>
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
     <header>
       <h1>William Peoples — Teaching Programming Portfolio</h1>
-      <p class="lead">
-        Aspiring CS educator • demo lessons • projects • reflections
-      </p>
-      <nav>
-        <a
-          href="https://www.linkedin.com/in/kevin-william-peoples-745007285/"
-          target="_blank"
-          rel="noopener"
-          >LinkedIn</a
-        >
+      <p class="lead">Aspiring CS educator • demo lessons • projects • reflections</p>
+      <nav aria-label="Primary">
+        <a href="https://www.linkedin.com/in/kevin-william-peoples-745007285/" target="_blank" rel="noopener">LinkedIn</a>
         <a href="#about">About</a>
-        <a href="#videos">Teaching Demos</a>
         <a href="#week2">Week 2</a>
+        <a href="#week3">Week 3</a>
+        <a href="#week4">Week 4</a>
       </nav>
     </header>
 
-    <main>
+    <main id="main" tabindex="-1">
+      <!-- About -->
       <section id="about">
         <h2>About</h2>
         <p>
-          Hi, I’m William — a third-year (soon to be fourth-year) Computer
-          Science major at UC San Diego. This portfolio was created for
-          <strong>EDS 124BR</strong>, and it highlights my teaching demos,
-          lesson materials, and projects that reflect my growth as both a
-          learner and a future educator in computer science.
+          Hi, I’m William — a third-year (soon to be fourth-year) Computer Science major at UC San Diego.
+          This portfolio was created for <strong>EDS 124BR</strong>, and it highlights my teaching demos,
+          lesson materials, and projects that reflect my growth as both a learner and a future educator in computer science.
         </p>
         <ul>
-          <li>
-            <strong>Interests:</strong> Gym/fitness, teaching, mathematics, and
-            exploring CS
-          </li>
-          <li>
-            <strong>Skills:</strong> Python, JavaScript, HTML/CSS, Scratch/Snap
-          </li>
+          <li><strong>Interests:</strong> Gym/fitness, teaching, mathematics, and exploring CS</li>
+          <li><strong>Skills:</strong> Python, JavaScript, HTML/CSS, Scratch/Snap</li>
         </ul>
       </section>
 
-      <!-- <section id="videos">
-        <h2>Teaching Demos (Videos)</h2>
-        <div class="grid">
-          <article class="card">
-            <h3>Variables &amp; Loops (5 min)</h3>
-            <iframe
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-              title="Demo Lesson Video"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            >
-            </iframe>
-            <p>
-              <a
-                href="https://youtu.be/dQw4w9WgXcQ"
-                target="_blank"
-                rel="noopener"
-                >Open video in new tab</a
-              >
-            </p>
-          </article>
-
-          <article class="card">
-            <h3>Conditionals with Scratch (3 min)</h3>
-            <p>No video yet — add one later.</p>
-          </article>
-        </div>
-      </section> -->
-
-      <section id="week2">
-        <h2>Week 2 Teaching Demos</h2>
+      <!-- Week 2 -->
+      <section id="week2" aria-labelledby="w2-title">
+        <h2 id="w2-title">Week 2 Teaching Demos</h2>
         <div class="grid">
           <article class="card">
             <h3>Demo 1</h3>
             <iframe
               src="https://drive.google.com/file/d/1RBRZIHgz6zowV2qGesKEWNFX79F9ZYZY/preview"
+              title="Week 2 Demo 1"
               allow="autoplay"
             ></iframe>
-            <p>
-              <a
-                href="https://drive.google.com/file/d/1RBRZIHgz6zowV2qGesKEWNFX79F9ZYZY/view?usp=sharing"
-                target="_blank"
-                rel="noopener"
-                >Open in Google Drive</a
-              >
-            </p>
+            <p><a href="https://drive.google.com/file/d/1RBRZIHgz6zowV2qGesKEWNFX79F9ZYZY/view?usp=sharing" target="_blank" rel="noopener">Open in Google Drive</a></p>
           </article>
 
           <article class="card">
             <h3>Demo 2</h3>
             <iframe
               src="https://drive.google.com/file/d/1bazpqoWg2v9_QkC1wtin1lTEoeRWYywt/preview"
+              title="Week 2 Demo 2"
               allow="autoplay"
             ></iframe>
-            <p>
-              <a
-                href="https://drive.google.com/file/d/1bazpqoWg2v9_QkC1wtin1lTEoeRWYywt/view?usp=sharing"
-                target="_blank"
-                rel="noopener"
-                >Open in Google Drive</a
-              >
-            </p>
+            <p><a href="https://drive.google.com/file/d/1bazpqoWg2v9_QkC1wtin1lTEoeRWYywt/view?usp=sharing" target="_blank" rel="noopener">Open in Google Drive</a></p>
           </article>
 
           <article class="card">
             <h3>Demo 3</h3>
             <iframe
               src="https://drive.google.com/file/d/1hEb196O5xB6Bg3CPc_EWqpzex1dBGQ0f/preview"
+              title="Week 2 Demo 3"
               allow="autoplay"
             ></iframe>
-            <p>
-              <a
-                href="https://drive.google.com/file/d/1hEb196O5xB6Bg3CPc_EWqpzex1dBGQ0f/view?usp=sharing"
-                target="_blank"
-                rel="noopener"
-                >Open in Google Drive</a
-              >
-            </p>
+            <p><a href="https://drive.google.com/file/d/1hEb196O5xB6Bg3CPc_EWqpzex1dBGQ0f/view?usp=sharing" target="_blank" rel="noopener">Open in Google Drive</a></p>
           </article>
 
           <article class="card">
             <h3>Demo 4</h3>
             <iframe
               src="https://drive.google.com/file/d/18apAiEpxdpvzsKKv_zgDxWW9EJBxKpIB/preview"
+              title="Week 2 Demo 4"
               allow="autoplay"
             ></iframe>
-            <p>
-              <a
-                href="https://drive.google.com/file/d/18apAiEpxdpvzsKKv_zgDxWW9EJBxKpIB/view?usp=sharing"
-                target="_blank"
-                rel="noopener"
-                >Open in Google Drive</a
-              >
-            </p>
+            <p><a href="https://drive.google.com/file/d/18apAiEpxdpvzsKKv_zgDxWW9EJBxKpIB/view?usp=sharing" target="_blank" rel="noopener">Open in Google Drive</a></p>
           </article>
         </div>
-        <p style="color: #555; font-size: 0.95rem">
-          Tip: if an embed shows “Sign in required”, make sure the Drive file is
-          shared as
+        <p class="tip">
+          Tip: if an embed shows “Sign in required”, make sure the Drive file is shared as
           <em>Anyone with the link → Viewer</em>.
         </p>
       </section>
 
-      <section id="week3">
-  <h2>Week 3 Teaching Demos</h2>
-  <div class="grid">
-    <article class="card">
-      <h3>Demo 1</h3>
-      <iframe
-        src="https://drive.google.com/file/d/1jm-Po-j2sin_XyHoALuIC8w88vCdCna6/preview"
-        allow="autoplay"
-      ></iframe>
-      <p>
-        <a
-          href="https://drive.google.com/file/d/1jm-Po-j2sin_XyHoALuIC8w88vCdCna6/view?usp=sharing"
-          target="_blank"
-          rel="noopener"
-          >Open in Google Drive</a
-        >
-      </p>
-    </article>
+      <!-- Week 3 -->
+      <section id="week3" aria-labelledby="w3-title">
+        <h2 id="w3-title">Week 3 Teaching Demos</h2>
+        <div class="grid">
+          <article class="card">
+            <h3>Demo 1</h3>
+            <iframe
+              src="https://drive.google.com/file/d/1jm-Po-j2sin_XyHoALuIC8w88vCdCna6/preview"
+              title="Week 3 Demo 1"
+              allow="autoplay"
+            ></iframe>
+            <p><a href="https://drive.google.com/file/d/1jm-Po-j2sin_XyHoALuIC8w88vCdCna6/view?usp=sharing" target="_blank" rel="noopener">Open in Google Drive</a></p>
+          </article>
 
-    <!-- New Demo 2 -->
-    <article class="card">
-      <h3>Demo 2</h3>
-      <iframe
-        src="https://drive.google.com/file/d/1XP2wajS0mOXsAdKhIcZJlHUgqVulTDak/preview"
-        allow="autoplay"
-      ></iframe>
-      <p>
-        <a
-          href="https://drive.google.com/file/d/1XP2wajS0mOXsAdKhIcZJlHUgqVulTDak/view?usp=sharing"
-          target="_blank"
-          rel="noopener"
-          >Open in Google Drive</a
-        >
-      </p>
-    </article>
-  </div>
-</section>
+          <article class="card">
+            <h3>Demo 2</h3>
+            <iframe
+              src="https://drive.google.com/file/d/1XP2wajS0mOXsAdKhIcZJlHUgqVulTDak/preview"
+              title="Week 3 Demo 2"
+              allow="autoplay"
+            ></iframe>
+            <p><a href="https://drive.google.com/file/d/1XP2wajS0mOXsAdKhIcZJlHUgqVulTDak/view?usp=sharing" target="_blank" rel="noopener">Open in Google Drive</a></p>
+          </article>
+        </div>
+      </section>
 
+      <!-- Week 4 -->
+      <section id="week4" aria-labelledby="w4-title">
+        <h2 id="w4-title">Week 4 Teaching Demos</h2>
+        <div class="grid">
+          <article class="card">
+            <h3>Demo 1</h3>
+            <iframe
+              src="https://drive.google.com/file/d/1miQkMD9M9_ouN9-X5tq_qqrmY3UxdL_k/preview"
+              title="Week 4 Demo 1"
+              allow="autoplay"
+            ></iframe>
+            <p><a href="https://drive.google.com/file/d/1miQkMD9M9_ouN9-X5tq_qqrmY3UxdL_k/view?usp=sharing" target="_blank" rel="noopener">Open in Google Drive</a></p>
+          </article>
+
+          <!-- Optional placeholders for future Week 4 demos:
+          <article class="card">
+            <h3>Demo 2</h3>
+            <p>No video yet — add one later.</p>
+          </article>
+          <article class="card">
+            <h3>Demo 3</h3>
+            <p>No video yet — add one later.</p>
+          </article>
+          <article class="card">
+            <h3>Demo 4</h3>
+            <p>No video yet — add one later.</p>
+          </article>
+          -->
+        </div>
+        <p class="tip">
+          Tip: if an embed shows “Sign in required”, make sure the Drive file is shared as
+          <em>Anyone with the link → Viewer</em>.
+        </p>
+      </section>
     </main>
+
+    <footer>
+      © <span id="year"></span> William Peoples · UC San Diego
+    </footer>
+
+    <script>
+      // set footer year
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
   </body>
 </html>
